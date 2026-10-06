@@ -1,4 +1,8 @@
-export default function handler(_request, response) {
-  response.setHeader('Cache-Control', 'no-store');
-  return response.status(200).json({ ok: true, service: 'chargepath-planner-api' });
-}
+export default {
+  fetch() {
+    return Response.json(
+      { ok: true, service: 'chargepath-planner-api' },
+      { headers: { 'Cache-Control': 'no-store' } },
+    );
+  },
+};
