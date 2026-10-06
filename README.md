@@ -2,14 +2,14 @@
 
 # ⚡ ChargePath
 
-### ChargeMap · EV Route & Charging Intelligence
+### EV Route & Charging Intelligence
 
 **Choose the smartest feasible charging stop—not simply the nearest one.**
 
 ChargePath is an explainable EV charging-station planner that combines shortest-path routing, battery safety constraints, station availability, charging-time preferences, and weighted decision scoring into one fast recommendation.
 
 <p>
-  <a href="https://github.com/19anveshh/ChargeMap">GitHub Repository</a>
+  <a href="https://github.com/19anveshh/ChargePath">GitHub Repository</a>
   ·
   <a href="https://charge-path.vercel.app">Live Demo</a>
 </p>
@@ -230,8 +230,8 @@ Malformed JSON or an invalid planning request returns HTTP `400` with an error p
 ### Run locally
 
 ```bash
-git clone https://github.com/19anveshh/ChargeMap.git
-cd ChargeMap
+git clone https://github.com/19anveshh/ChargePath.git
+cd ChargePath
 npm install
 npm start
 ```
@@ -243,7 +243,7 @@ The `start` script in `package.json` runs `node server.mjs`. The server uses `PO
 ## Project Structure
 
 ```text
-ChargeMap/
+ChargePath/
 ├── api/
 │   ├── health.mjs           # Health endpoint function
 │   └── plan.mjs             # Planning endpoint function
@@ -331,7 +331,7 @@ The station catalog, road graph, availability, travel times, and charging charac
 ## Demo
 
 - **Live Demo:** https://charge-path.vercel.app
-- **GitHub:** https://github.com/19anveshh/ChargeMap
+- **GitHub:** https://github.com/19anveshh/ChargePath
 
 ## Author
 
