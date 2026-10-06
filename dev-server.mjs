@@ -4,7 +4,7 @@ import { extname, join, normalize } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { planTrip } from './planner-core.mjs';
 
-const root = fileURLToPath(new URL('.', import.meta.url));
+const root = join(fileURLToPath(new URL('.', import.meta.url)), 'public');
 const port = Number(process.env.PORT || 3000);
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml' };
 
@@ -37,7 +37,7 @@ createServer(async (req, res) => {
   }
   if (rawPath.startsWith('/api/')) return sendJson(res, 404, { error: 'API route not found' });
 
-  const requestedPath = rawPath === '/manus-routes.json' ? '/public/manus-routes.json' : (rawPath === '/' ? '/index.html' : rawPath);
+  const requestedPath = rawPath === '/' ? '/index.html' : rawPath;
   const safePath = normalize(requestedPath).replace(/^\.\.(\/|\\)/, '');
   const filePath = join(root, safePath);
   try {
