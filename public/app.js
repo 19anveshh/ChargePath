@@ -446,6 +446,8 @@ function schedulePlan() {
 
 async function requestPlan(options = {}) {
   const requestId = ++state.requestId;
+  const apiStatus = $('#api-status');
+  if (apiStatus) apiStatus.textContent = 'CONNECTING';
   try {
     const response = await fetch('/api/plan', {
       method: 'POST',
@@ -461,13 +463,16 @@ async function requestPlan(options = {}) {
     const data = await response.json();
     if (requestId !== state.requestId) return;
     state.backendPlan = data;
+    if (apiStatus) apiStatus.textContent = 'ONLINE';
     render();
     if (options.toast) {
       showToast(data.best ? `${data.best.name} recalculated as optimal via API.` : 'No station clears current constraints.');
     }
   } catch (_) {
     // Graceful fallback to client-side Dijkstra solver
+    if (requestId !== state.requestId) return;
     state.backendPlan = null;
+    if (apiStatus) apiStatus.textContent = 'OFFLINE';
     render();
     if (options.toast) {
       showToast(state.ranked[0] ? `${state.ranked[0].name} recalculated via offline Dijkstra.` : 'No station clears current constraints.');

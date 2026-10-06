@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "main": "index.mjs",
+  "main": "server.mjs",
   "scripts": {
-    "start": "node dev-server.mjs"
+    "start": "node server.mjs"
   }
 }
